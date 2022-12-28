@@ -1,7 +1,7 @@
 version: "3.9"
 services:
  useritem-api-service:
-  image: jsels/eindproject_api_development
+  image: jsels/eind_project_api_development
   ports:
     - "8000:8000"
   volumes:
