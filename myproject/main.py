@@ -1,18 +1,20 @@
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
 
+import os
 import crud
 from . import models
 from . import schemas
 from .database import SessionLocal, engine
-import os
 
+print("We are in the main.......")
 if not os.path.exists('.\sqlitedb'):
+    print("Making folder.......")
     os.makedirs('.\sqlitedb')
 
-#"sqlite:///./sqlitedb/sqlitedata.db"
+print("Creating tables.......")
 models.Base.metadata.create_all(bind=engine)
-
+print("Tables created.......")
 app = FastAPI()
 
 
