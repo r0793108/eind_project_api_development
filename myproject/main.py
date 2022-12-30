@@ -4,11 +4,11 @@ from sqlalchemy.orm import Session
 
 import os
 
-from myproject import crud
-from myproject import auth
-from myproject import models
-from myproject import schemas
-from .database import SessionLocal, engine
+import crud
+import auth
+import models
+import schemas
+from database import SessionLocal, engine
 
 
 print("We are in the main.......")
@@ -89,4 +89,6 @@ def create_item_for_user(
 def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     items = crud.get_items(db, skip=skip, limit=limit)
     return items
+
+
 
