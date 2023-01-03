@@ -7,12 +7,9 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 from sqlalchemy.orm import Session
 
-# to get a string like this run:
-# openssl rand -hex 32
-SECRET_KEY = "6010282ea60165c51537cd7ba3968b1b77518994dd44aef46722523e7faa4efb"
+SECRET_KEY = "5781ac56a903beebdc14cfb061e9bdc656021abb986317405fa46657cd66efda"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
-
 
 pwd_context = CryptContext(schemes=["argon2", "bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
@@ -73,4 +70,3 @@ def get_current_active_user(db: Session, token: str = Depends(oauth2_scheme)):
     if not current_user.is_active:
         raise HTTPException(status_code=400, detail="Inactive user")
     return current_user
-
