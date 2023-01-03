@@ -29,13 +29,34 @@ def create_user(db: Session, user: schemas.UserCreate):
     return db_user
 
 
-def get_items(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.Item).offset(skip).limit(limit).all()
+def get_spelers(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.Speler).offset(skip).limit(limit).all()
 
 
-def create_user_item(db: Session, item: schemas.ItemCreate, user_id: int):
-    db_item = models.Item(**item.dict(), owner_id=user_id)
-    db.add(db_item)
+def create_speler(db: Session, item: schemas.Team, user_id: int):
+    db_speler = models.Team(**item.dict(), HisTeam_id=team_id)
+    db.add(db_speler)
     db.commit()
-    db.refresh(db_item)
-    return db_item
+    db.refresh(db_speler)
+    return db_speler
+
+
+def get_speler(db: Session, speler_id: int):
+    return db.query(models.Speler).filter(models.Speler.id == speler_id).first()
+
+
+def get_team(db: Session, team_id: int):
+    return db.query(models.Team).filter(models.Team.id == team_id).first()
+
+
+def get_teams(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.Teams).offset(skip).limit(limit).all()
+
+
+def create_team(db: Session, user: schemas.UserCreate):
+    db_team = models.Team(TeamName=team.TeamName, years=team.years)
+    db.add(db_team)
+    db.commit()
+    db.refresh(db_team)
+    return db_team
+

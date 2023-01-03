@@ -13,15 +13,25 @@ class User(Base):
     hashed_password = Column(String)
     is_active = Column(Boolean, default=True)
 
-    items = relationship("Item", back_populates="owner")
 
-
-class Item(Base):
-    __tablename__ = "items"
+class Team(Base):
+    __tablename__ = "teams"
 
     id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, index=True)
-    description = Column(String, index=True)
-    owner_id = Column(Integer, ForeignKey("users.id"))
+    TeamName = Column(String, index=True)
+    ChampionsLeague = Column(Boolean, default=False)
+    years = Column(String, index=True)
 
-    owner = relationship("User", back_populates="items")
+    spelers = relationship("Speler", back_populates="HisTeam")
+
+
+class Speler(Base):
+    __tablename__ = "spelers"
+
+    id = Column(Integer, primary_key=True, index=True)
+    SpelerName = Column(String, index=True)
+    HasChampionsLeague = Column(Boolean, default=True)
+    HisTeam_id = Column(Integer, ForeignKey("teams.id"))
+
+    HisTeam = relationship("Team", back_populates="spelers")
+

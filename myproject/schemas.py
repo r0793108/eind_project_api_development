@@ -1,18 +1,21 @@
 from pydantic import BaseModel
 
 
-class ItemBase(BaseModel):
-    title: str
-    description: str | None = None
+class TeamBase(BaseModel):
+    TeamName: str
+    ChampionsLeague: bool
+    years: str | None = None
 
 
-class ItemCreate(ItemBase):
+class TeamCreate(TeamBase):
     pass
 
 
-class Item(ItemBase):
+class Team(TeamBase):
     id: int
-    owner_id: int
+    TeamName: str
+    ChampionsLeague: bool
+    years: str
 
     class Config:
         orm_mode = True
@@ -29,7 +32,25 @@ class UserCreate(UserBase):
 class User(UserBase):
     id: int
     is_active: bool
-    items: list[Item] = []
+    items: list[Team] = []
+
+    class Config:
+        orm_mode = True
+
+
+class SpelerBase(BaseModel):
+    SpelerName: str
+    HasChampionsLeague: bool
+
+
+class SpelerCreate(SpelerBase):
+    pass
+
+
+class Speler(SpelerBase):
+    id: int
+    SpelerName: str
+    HisTeam_id: int
 
     class Config:
         orm_mode = True
