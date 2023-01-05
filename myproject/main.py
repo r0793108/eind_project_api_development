@@ -73,21 +73,21 @@ def read_user(user_id: int, db: Session = Depends(get_db)):
     return db_user
 
 
-@app.post("/users/{user_id}/items/", response_model=schemas.Item)
-def create_item_for_user(
-    user_id: int, item: schemas.ItemCreate, db: Session = Depends(get_db)
-):
-    return crud.create_user_item(db=db, item=item, user_id=user_id)
+#@app.post("/users/{user_id}/items/", response_model=schemas.Item)
+#def create_item_for_user(
+ #   user_id: int, item: schemas.ItemCreate, db: Session = Depends(get_db)
+#):
+ #   return crud.create_user_item(db=db, item=item, user_id=user_id)
 
 
-@app.get("/items/", response_model=list[schemas.Item])
-def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    items = crud.get_items(db, skip=skip, limit=limit)
-    return items
+#@app.get("/items/", response_model=list[schemas.Item])
+#def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+ #   items = crud.get_items(db, skip=skip, limit=limit)
+  #  return items
 
 
 @app.post("/teams/", response_model=schemas.Team)
-def create_team(team: schemas.TeamCreate, db: Session = Depends(get_db)):
+def create_team(team: schemas.TeamCreate, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     db_team = crud.get_team_by_name(db, name=team.name)
     if db_team:
         raise HTTPException(status_code=400, detail="Team already registered")
@@ -95,13 +95,13 @@ def create_team(team: schemas.TeamCreate, db: Session = Depends(get_db)):
 
 
 @app.get("/teams/", response_model=list[schemas.Team])
-def read_teams(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+def read_teams(skip: int = 0, limit: int = 100, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     teams = crud.get_teams(db, skip=skip, limit=limit)
     return teams
 
 
 @app.get("/teams/{team_id}", response_model=schemas.Team)
-def read_team(team_id: int, db: Session = Depends(get_db)):
+def read_team(team_id: int, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     db_team = crud.get_team(db, team_id=team_id)
     if db_team is None:
         raise HTTPException(status_code=404, detail="User not found")
@@ -109,7 +109,7 @@ def read_team(team_id: int, db: Session = Depends(get_db)):
 
 
 @app.post("/spelers/", response_model=schemas.Speler)
-def create_speler(speler: schemas.SpelerCreate, db: Session = Depends(get_db)):
+def create_speler(speler: schemas.SpelerCreate, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     db_speler = crud.get_speler_by_name(db, name=speler.name)
     if db_speler:
         raise HTTPException(status_code=400, detail="Speler already registered")
@@ -117,7 +117,7 @@ def create_speler(speler: schemas.SpelerCreate, db: Session = Depends(get_db)):
 
 
 @app.put("/spelers/", response_model=schemas.Speler)
-async def create_speler(speler: schemas.SpelerCreate, db: Session = Depends(get_db)):
+async def create_speler(speler: schemas.SpelerCreate, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     db_speler = crud.get_speler_by_name(db, name=speler.name)
     if db_speler:
         raise HTTPException(status_code=400, detail="Speler already registered")
@@ -125,13 +125,13 @@ async def create_speler(speler: schemas.SpelerCreate, db: Session = Depends(get_
 
 
 @app.get("/spelers/", response_model=list[schemas.Speler])
-def read_spelers(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+def read_spelers(skip: int = 0, limit: int = 100, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     spelers = crud.get_spelers(db, skip=skip, limit=limit)
     return spelers
 
 
 @app.get("/spelers/{speler_id}", response_model=schemas.Speler)
-def read_speler(speler_id: int, db: Session = Depends(get_db)):
+def read_speler(speler_id: int, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     db_speler = crud.get_speler(db, speler_id=speler_id)
     if db_speler is None:
         raise HTTPException(status_code=404, detail="Speler not found")
@@ -139,7 +139,7 @@ def read_speler(speler_id: int, db: Session = Depends(get_db)):
 
 
 @app.delete("/spelers/", response_model=schemas.Speler)
-def delete_speler(speler: schemas.SpelerCreate, db: Session = Depends(get_db)):
+def delete_speler(speler: schemas.SpelerCreate, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     db_speler = crud.get_speler_by_name(db, name=speler.name)
     return crud.create_speler(db=db, speler=speler)
 
