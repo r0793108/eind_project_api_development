@@ -104,7 +104,7 @@ def read_teams(skip: int = 0, limit: int = 100, db: Session = Depends(get_db), t
 def read_team(team_id: int, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     db_team = crud.get_team(db, team_id=team_id)
     if db_team is None:
-        raise HTTPException(status_code=404, detail="User not found")
+        raise HTTPException(status_code=404, detail="Team not found")
     return db_team
 
 
@@ -117,11 +117,11 @@ def create_speler(speler: schemas.SpelerCreate, db: Session = Depends(get_db), t
 
 
 @app.put("/spelers/", response_model=schemas.Speler)
-async def create_speler(speler: schemas.SpelerCreate, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
+async def update_speler(speler: schemas.SpelerUpdate, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     db_speler = crud.get_speler_by_name(db, name=speler.name)
     if db_speler:
         raise HTTPException(status_code=400, detail="Speler already registered")
-    return crud.create_speler(db=db, speler=speler)
+    return crud.update_speler(db, speler=speler)
 
 
 @app.get("/spelers/", response_model=list[schemas.Speler])
@@ -139,7 +139,7 @@ def read_speler(speler_id: int, db: Session = Depends(get_db), token: str = Depe
 
 
 @app.delete("/spelers/", response_model=schemas.Speler)
-def delete_speler(speler: schemas.SpelerCreate, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
-    db_speler = crud.get_speler_by_name(db, name=speler.name)
-    return crud.create_speler(db=db, speler=speler)
+def delete_speler(speler: schemas.SpelerDelete, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
+    db_speler = crud.get_speler_by_name(db, name=speler.name, teams=speler.teams)
+    return crud.delete_speler(db=db, speler=speler)
 

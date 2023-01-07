@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+import sqlalchemy.orm.query
 from fastapi.security import OAuth2PasswordBearer
 
 import models
@@ -62,8 +63,16 @@ def create_speler(db: Session, speler: schemas.SpelerCreate):
     return db_speler
 
 
-def delete_speler(db: Session, speler: schemas.SpelerCreate):
-    db_speler = models.Speler(name=speler.name)
+def update_speler(db: Session, speler: schemas.SpelerUpdate):
+    db_speler = models.Speler(name=speler.name, teams=speler.teams)
+    db.query(db_speler)
+    db.commit()
+    db.refresh(db_speler)
+    return db_speler
+
+
+def delete_speler(db: Session, speler: schemas.SpelerDelete):
+    db_speler = models.Speler(name=speler.name, teams=speler.teams)
     db.delete(db_speler)
     db.commit()
     db.refresh(db_speler)
