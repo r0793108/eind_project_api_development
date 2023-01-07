@@ -24,7 +24,8 @@ class SpelerBase(BaseModel):
 
 
 class SpelerCreate(SpelerBase):
-    pass
+    name: str
+    teams: str
 
 
 class Speler(SpelerBase):
