@@ -20,7 +20,7 @@ from pydantic import BaseModel
 
 class SpelerBase(BaseModel):
     name: str
-
+    club: str
 
 class SpelerCreate(SpelerBase):
     pass
@@ -54,13 +54,14 @@ class User(UserBase):
 
 class TeamBase(BaseModel):
     name: str
+    HasWonChampionsLeague: bool
     ChampionsYears: str
-
+    
 
 class TeamCreate(TeamBase):
     name: str
     ChampionsYears: str
-
+    HasWonChampionsLeague: bool
 
 class Team(TeamBase):
     id: int
