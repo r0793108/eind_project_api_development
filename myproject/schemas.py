@@ -58,7 +58,7 @@ class TeamBase(BaseModel):
 
 class TeamCreate(TeamBase):
     name: str
-    HasWonChampionsLeague: bool
+    ChampionsYears: str
 
 class Team(TeamBase):
     id: int
