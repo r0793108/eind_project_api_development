@@ -57,12 +57,12 @@ class TeamBase(BaseModel):
     ChampionsYears: str
 
 
-class TeamCreate(UserBase):
+class TeamCreate(TeamBase):
     name: str
     ChampionsYears: str
 
 
-class Team(UserBase):
+class Team(UTeamBase):
     id: int
     HasWonChampionsLeague: bool
 
