@@ -55,7 +55,7 @@ def get_spelers(db: Session, skip: int = 0, limit: int = 100):
 
 
 def create_speler(db: Session, speler: schemas.SpelerCreate):
-    db_speler = models.Speler(**speler.dict(), club_id=speler_id)
+    db_speler = models.Speler(name=speler.name, teams=speler.teams)
     db.add(db_speler)
     db.commit()
     db.refresh(db_speler)
