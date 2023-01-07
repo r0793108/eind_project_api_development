@@ -62,7 +62,7 @@ class TeamCreate(TeamBase):
     ChampionsYears: str
 
 
-class Team(UTeamBase):
+class Team(TeamBase):
     id: int
     HasWonChampionsLeague: bool
 
