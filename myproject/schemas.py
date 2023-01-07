@@ -54,7 +54,6 @@ class User(UserBase):
 
 class TeamBase(BaseModel):
     name: str
-    HasWonChampionsLeague: bool
     ChampionsYears: str
     
 
@@ -65,7 +64,6 @@ class TeamCreate(TeamBase):
 
 class Team(TeamBase):
     id: int
-    HasWonChampionsLeague: bool
     spelers: list[Speler] = []
 
     class Config:
