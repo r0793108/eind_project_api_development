@@ -31,7 +31,6 @@ class Speler(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
-    HasChampionsLeague = Column(Boolean, default=False)
     club_id = Column(Integer, ForeignKey("teams.id"))
 
     club = relationship("Team", back_populates="spelers")
@@ -42,7 +41,6 @@ class Team(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
-    HasWonChampionsLeague = Column(Boolean, default=False)
     ChampionsYears = Column(String)
 
     spelers = relationship("Speler", back_populates="club")
