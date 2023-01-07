@@ -20,7 +20,8 @@ from pydantic import BaseModel
 
 class SpelerBase(BaseModel):
     name: str
-    club: str
+    teams: str
+
 
 class SpelerCreate(SpelerBase):
     pass
@@ -28,7 +29,7 @@ class SpelerCreate(SpelerBase):
 
 class Speler(SpelerBase):
     id: int
-    club_id: int
+    HasChampionsLeague: bool
 
     class Config:
         orm_mode = True
@@ -54,15 +55,16 @@ class User(UserBase):
 class TeamBase(BaseModel):
     name: str
     ChampionsYears: str
-    
 
-class TeamCreate(TeamBase):
+
+class TeamCreate(UserBase):
     name: str
     ChampionsYears: str
 
-class Team(TeamBase):
+
+class Team(UserBase):
     id: int
-    spelers: list[Speler] = []
+    HasWonChampionsLeague: bool
 
     class Config:
         orm_mode = True
