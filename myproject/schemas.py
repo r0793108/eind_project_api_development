@@ -28,7 +28,6 @@ class SpelerCreate(SpelerBase):
 
 class Speler(SpelerBase):
     id: int
-    HasChampionsLeague: bool
     club_id: int
 
     class Config:
@@ -59,7 +58,6 @@ class TeamBase(BaseModel):
 
 class TeamCreate(TeamBase):
     name: str
-    ChampionsYears: str
     HasWonChampionsLeague: bool
 
 class Team(TeamBase):
