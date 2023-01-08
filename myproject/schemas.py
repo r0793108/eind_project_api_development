@@ -22,7 +22,12 @@ class SpelerBase(BaseModel):
     name: str
     teams: str
 
+        
+class SpelerUpdate(SpelerBase):
+    name: str
+    teams: str
 
+        
 class SpelerCreate(SpelerBase):
     name: str
     teams: str
