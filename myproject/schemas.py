@@ -33,6 +33,11 @@ class SpelerCreate(SpelerBase):
     teams: str
 
 
+class SpelerDelete(SpelerBase):
+    name: str
+    teams: str
+
+
 class Speler(SpelerBase):
     id: int
     HasChampionsLeague: bool
