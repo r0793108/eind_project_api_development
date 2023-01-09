@@ -140,6 +140,6 @@ def read_speler(speler_id: int, db: Session = Depends(get_db), token: str = Depe
 
 @app.delete("/spelers/", response_model=schemas.Speler)
 def delete_speler(speler: schemas.SpelerDelete, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
-    db_speler = crud.get_speler_by_name(db, name=speler.name, teams=speler.teams)
+    db_speler = crud.get_speler_by_name(db, name=speler.name)
     return crud.delete_speler(db=db, speler=speler)
 
