@@ -20,7 +20,7 @@ POST /USERS, deze endpoint geeft de optie om een nieuwe user aan te maken.
 GET /USERS/ME, deze endpoint geeft de user terug waarmee je op die moment aangemeld bent (token) .
 ![afbeelding](https://user-images.githubusercontent.com/57671114/211198726-9d4fa2f9-80f8-4486-8f3b-c17306953447.png)
 
-GET /USERS/{USER_ID}, deze endpoint geeft de mogelijkheid om 1 bepaalde user terug te geven op basis van id. Net zoals de user-endpoint heeft deze een query parameter en heeft deze een token nodig.
+GET /USERS/{USER_ID}, deze endpoint geeft de mogelijkheid om 1 bepaalde user terug te geven op basis van id (path parameter). Net zoals de user-endpoint heeft deze een query parameter en heeft deze een token nodig.
 ![afbeelding](https://user-images.githubusercontent.com/57671114/211198826-6f9c8f6b-5871-42f6-adc6-e9a5e2f2be12.png)
 
 GET /TEAMS, deze endpoint geeft de mogelijkheid om alle teams terug te geven. Net zoals de user-endpoint heeft deze een query parameter en heeft deze een token nodig.
@@ -29,5 +29,10 @@ GET /TEAMS, deze endpoint geeft de mogelijkheid om alle teams terug te geven. Ne
 POST /TEAMS, deze endpoint geeft de mogelijkheid om een team aan te maken. Net zoals de user-endpoint heeft deze een query parameter en heeft deze een token nodig.
 ![afbeelding](https://user-images.githubusercontent.com/57671114/211199314-d798bc6e-534c-4347-897d-d6f505cd44d7.png)
 
-GET /TEAMS/{TEAM_ID}, deze endpoint geeft de mogelijkheid om 1 bapaald team terug te geven op basis van id. Net zoals de user-endpoint heeft deze een query parameter en heeft deze een token nodig.
+GET /TEAMS/{TEAM_ID}, deze endpoint geeft de mogelijkheid om 1 bapaald team terug te geven op basis van id (path parameter). Net zoals de user-endpoint heeft deze een query parameter en heeft deze een token nodig.
 ![afbeelding](https://user-images.githubusercontent.com/57671114/211199387-15ae4a25-8b0d-4999-ac3c-53dfcfeb1fe0.png)
+
+GET /SPELERS, deze endpoint geeft de mogelijkheid om alle spelers terug te geven. Net zoals de user-endpoint heeft deze een query parameter en heeft deze een token nodig.
+![image](https://user-images.githubusercontent.com/57671114/211324453-7849852f-0695-4057-be22-09ac18a6b924.png)
+
+PUT /SPELERS, deze endpoint geeft de mogelijkheid om een bepaalde speler aan te passen. Net zoals de user-endpoint heeft deze een token nodig.
