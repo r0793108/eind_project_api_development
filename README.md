@@ -26,7 +26,7 @@ GET /USERS/{USER_ID}, deze endpoint geeft de mogelijkheid om 1 bepaalde user ter
 GET /TEAMS, deze endpoint geeft de mogelijkheid om alle teams terug te geven. Net zoals de user-endpoint heeft deze een query parameter en heeft deze een token nodig.
 ![afbeelding](https://user-images.githubusercontent.com/57671114/211199123-3f24f98f-7247-4494-b4a9-bbc12bb5b433.png)
 
-POST /TEAMS, deze endpoint geeft de mogelijkheid om een team aan te maken. Net zoals de user-endpoint heeft deze een query parameter en heeft deze een token nodig.
+POST /TEAMS, deze endpoint geeft de mogelijkheid om een team aan te maken. Net zoals de user-endpoint heeft deze een token nodig.
 ![afbeelding](https://user-images.githubusercontent.com/57671114/211199314-d798bc6e-534c-4347-897d-d6f505cd44d7.png)
 
 GET /TEAMS/{TEAM_ID}, deze endpoint geeft de mogelijkheid om 1 bapaald team terug te geven op basis van id (path parameter). Net zoals de user-endpoint heeft deze een query parameter en heeft deze een token nodig.
@@ -36,3 +36,10 @@ GET /SPELERS, deze endpoint geeft de mogelijkheid om alle spelers terug te geven
 ![image](https://user-images.githubusercontent.com/57671114/211324453-7849852f-0695-4057-be22-09ac18a6b924.png)
 
 PUT /SPELERS, deze endpoint geeft de mogelijkheid om een bepaalde speler aan te passen. Net zoals de user-endpoint heeft deze een token nodig.
+Deze endpoint werkt echter niet, ik geraakte nie voorbij deze error.
+![image](https://user-images.githubusercontent.com/57671114/211326457-6067e912-c8fe-4411-9dbe-6695b004821d.png)
+
+POST /SPELERS, deze endpoint geeft de megelijkheid om een speler aan te maken. Net zoals de user-endpoint heeft deze een token nodig.
+![image](https://user-images.githubusercontent.com/57671114/211327187-ebc7a853-c18d-45be-8e2b-3aac2f0d586f.png)
+
+DELETE /SPELERS, deze endpoint geeft de megelijkheid om een speler te verwijderen. Net zoals de user-endpoint heeft deze een token nodig.
