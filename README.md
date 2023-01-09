@@ -3,6 +3,9 @@ Voor het eindproject van API Development maakte ik een gevanceerdere versie van 
 
 Vervolgens koos ik er ook nog voor om een aantal tests te schrijven voor de get-endpoints. Deze plaatste ik in het mapje pytests.
 
+Ik had ook nog een paging gedaan om 4.1 en 5.1 te doen maar voor deze dingen moest je een account aanmaken en dit lukte echter niet bij mij.
+
+Het zou kunnen zijn dat de api op okteto cloud niet beschikbaar is omdat ik merk dat na 2 dagen, deze in slaapmodus gaat. Moest dit zo zijn kan u mij altijd contacteren en dan deploy ik hem opnieuw.
 
 # Screen GitHub Docs
 ![afbeelding](https://user-images.githubusercontent.com/57671114/211197785-7cd911b5-d397-4225-a32d-6c76476abc64.png)
